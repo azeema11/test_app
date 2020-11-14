@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/Screens/login.dart';
 import 'package:test_app/bloc/test_bloc_bloc.dart';
-//'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocProvider(
-        create: (BuildContext context) => TestBlocBloc(),
+        create: (BuildContext context) => LoginBloc(),
         child: Login(),
       )
     );

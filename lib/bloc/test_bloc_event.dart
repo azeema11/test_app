@@ -1,4 +1,6 @@
 part of 'test_bloc_bloc.dart';
 
 @immutable
-abstract class TestBlocEvent {}
+abstract class LoginEvent {}
+
+class LoginButtonClickEvent extends LoginEvent{}

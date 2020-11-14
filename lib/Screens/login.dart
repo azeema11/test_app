@@ -18,7 +18,7 @@ class _Login extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final lo = BlocProvider.of<TestBlocBloc>(context);
+    final lo = /*Bloc*/Provider.of<Auth>(context);
     return Scaffold(
       body: Container(
         padding: EdgeInsets.fromLTRB(
