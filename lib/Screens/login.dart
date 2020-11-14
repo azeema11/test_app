@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
+import 'package:test_app/Services/auth.dart';
 
-class Login extends StatefulWidget{
-
+class Login extends StatefulWidget {
   _Login createState() => _Login();
 }
 
-class _Login extends State<Login>{
-
+class _Login extends State<Login> {
   final formkey = GlobalKey<FormState>();
   final FocusNode f1 = new FocusNode();
   final FocusNode f2 = new FocusNode();
@@ -19,48 +19,63 @@ class _Login extends State<Login>{
     final lo = Provider.of<Auth>(context);
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width/20, MediaQuery.of(context).size.height/12, MediaQuery.of(context).size.width/20, 0.0),
+        padding: EdgeInsets.fromLTRB(
+            MediaQuery.of(context).size.width / 20,
+            MediaQuery.of(context).size.height / 12,
+            MediaQuery.of(context).size.width / 20,
+            0.0),
         child: Form(
           key: formkey,
           child: ListView(
             children: [
               Text(
                 "Login",
-                style: TextStyle(
-                  fontSize: 80.0,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.w600),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height/15,),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 15,
+              ),
               TextFormField(
                 focusNode: f1,
                 decoration: InputDecoration(
-                  labelText:"Email-Id",
+                  labelText: "Email-Id",
                   labelStyle: TextStyle(
-                    color: f1.hasFocus ? Colors.green[800]:null,
-                    ),
-                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide(width:2.0,color: Colors.grey)),
-                  focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Colors.green[800], width: 2.0),),
+                    color: f1.hasFocus ? Colors.green[800] : null,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(width: 2.0, color: Colors.grey)),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Colors.green[800], width: 2.0),
+                  ),
                 ),
                 validator: RequiredValidator(errorText: "Enter the title"),
                 onChanged: (value) => email = value,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height/50,),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 50,
+              ),
               TextFormField(
                 obscureText: true,
                 focusNode: f2,
                 decoration: InputDecoration(
-                  labelText:"Password",
+                  labelText: "Password",
                   labelStyle: TextStyle(
-                    color: f2.hasFocus ? Colors.green[800]:null,
-                    ),
-                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide(width:2.0,color: Colors.grey)),
-                  focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Colors.green[800], width: 2.0),),
+                    color: f2.hasFocus ? Colors.green[800] : null,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(width: 2.0, color: Colors.grey)),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Colors.green[800], width: 2.0),
+                  ),
                 ),
                 validator: RequiredValidator(errorText: "Enter the Password"),
                 onChanged: (value) => password = value,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height/70,),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 70,
+              ),
               Text(
                 lo.lstr == null ? "" : lo.lstr,
                 style: TextStyle(
@@ -69,7 +84,7 @@ class _Login extends State<Login>{
                   fontSize: 15,
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height/40),
+              SizedBox(height: MediaQuery.of(context).size.height / 40),
               Center(
                 child: RaisedButton(
                   color: Colors.green[800],
@@ -87,7 +102,7 @@ class _Login extends State<Login>{
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height/4),
+              SizedBox(height: MediaQuery.of(context).size.height / 4),
               Center(
                 child: FlatButton(
                   textColor: Colors.green[800],
@@ -106,7 +121,7 @@ class _Login extends State<Login>{
               ),
             ],
           ),
-        ),        
+        ),
       ),
     );
   }
