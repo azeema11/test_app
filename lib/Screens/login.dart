@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Services/auth.dart';
+import 'package:test_app/bloc/test_bloc_bloc.dart';
 
 class Login extends StatefulWidget {
   _Login createState() => _Login();
@@ -16,7 +18,7 @@ class _Login extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final lo = Provider.of<Auth>(context);
+    final lo = BlocProvider.of<TestBlocBloc>(context);
     return Scaffold(
       body: Container(
         padding: EdgeInsets.fromLTRB(
