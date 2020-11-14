@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "868449243822",
+    "firebase_url": "https://test-39ee3.firebaseio.com",
+    "project_id": "test-39ee3",
+    "storage_bucket": "test-39ee3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868449243822:android:4713f06918902f828a133f",
+        "android_client_info": {
+          "package_name": "com.azeem.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868449243822-uf6jfnr19q00qaft5e3k4380oimgt6qk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX1PmzdggrA3zAfk-ELDQ-gFtUrjLWFkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868449243822-9lmlbv61vka631gnngdhi150nt50inuf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
