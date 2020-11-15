@@ -22,8 +22,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       try{
         yield LoginLoadState();
         await _auth.login(event.email, event.password);
-        if(_auth.usr.uid != null)
+        if(_auth.usr.uid != null){
           yield LoginSuccessState(_auth.usr.uid);
+        }
         else{
           yield LoginFailedState("Enter valid username or password");
         }
@@ -39,6 +40,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           yield LoginSuccessState(_auth.usr.email);
         else{
           yield LoginFailedState("Enter valid gmail account");
+        }
+      } catch(e){
+        yield LoginFailedState(e.toString());
+      }
+    }
+    else if(event is RegisterButtonClickEvent){
+      try{
+        yield LoginLoadState();
+        await _auth.register(event.email, event.password, event.name);
+        if(_auth.usr.uid != null)
+          yield LoginSuccessState(_auth.usr.email);
+        else{
+          yield LoginFailedState("Enter valid email address");
         }
       } catch(e){
         yield LoginFailedState(e.toString());

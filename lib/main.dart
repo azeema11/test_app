@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:test_app/Repository/auth.dart';
 import 'package:test_app/Screens/home.dart';
 import 'package:test_app/Screens/login.dart';
+import 'package:test_app/Screens/register.dart';
 import 'package:test_app/bloc/test_bloc_bloc.dart';
 
 void main() async {
@@ -36,6 +37,9 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
+        routes: {
+          "/r": (context) => Register()
+        },
         home: BlocListener<LoginBloc, LoginState>(
           listener: (BuildContext context, LoginState state) => LoginBloc(auth: _auth),
           child: BlocBuilder<LoginBloc, LoginState>(

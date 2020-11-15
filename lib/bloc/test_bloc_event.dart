@@ -10,6 +10,14 @@ class LoginButtonClickEvent extends LoginEvent{
   LoginButtonClickEvent(this.email,this.password);
 }
 
+class RegisterButtonClickEvent extends LoginEvent{
+  final String email;
+  final String password;
+  final String name;
+
+  RegisterButtonClickEvent(this.email,this.password,this.name);
+}
+
 class GoogleLoginClickEvent extends LoginEvent{}
 
 class LogoutButtonClickEvent extends LoginEvent{}

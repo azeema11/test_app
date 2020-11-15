@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:test_app/Repository/auth.dart';
 import 'package:test_app/bloc/test_bloc_bloc.dart';
 
 class Login extends StatefulWidget {
@@ -14,7 +13,6 @@ class _Login extends State<Login> {
   final FocusNode f2 = new FocusNode();
   String email;
   String password;
-  Auth a = new Auth();
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +100,7 @@ class _Login extends State<Login> {
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height / 40),
-                  Center(
+                  /*Center(
                     child: RaisedButton(
                       color: Colors.blue,
                       textColor: Colors.white,
@@ -118,13 +116,12 @@ class _Login extends State<Login> {
                         ),
                       ),
                     ),
-                  ),
+                  ),*/
                   SizedBox(height: MediaQuery.of(context).size.height / 4),
                   Center(
                     child: FlatButton(
                       textColor: Colors.green[800],
                       onPressed: () {
-                        a.lerrorstr(null);
                         Navigator.pushNamed(context, "/r");
                       },
                       child: Text(

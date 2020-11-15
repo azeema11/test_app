@@ -10,6 +10,7 @@ class Auth{
   FirebaseFirestore store;
   FirebaseAuth auth;
   GoogleSignIn googleSignIn;
+  DocumentSnapshot doc;
 
   Auth({FirebaseAuth firebaseAuth, GoogleSignIn googleSignin})
       : auth = firebaseAuth ?? FirebaseAuth.instance,
@@ -24,7 +25,8 @@ class Auth{
   }
 
   Future login(email, password) async {
-    await auth.signInWithEmailAndPassword(email: email, password: password).then((value) => usr = value.user);
+    await auth.signInWithEmailAndPassword(email: email, password: password)
+    .then((value) => usr = value.user);
   }
 
   Future googleLogin() async{
@@ -38,9 +40,9 @@ class Auth{
   }
 
   Future register(email, password, name) async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value) => usr = value.user).whenComplete(() {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value) => usr = value.user)/*.whenComplete(() {
       store.collection("Users").doc(usr.uid).set({"name": name, "email": email});
-    });
+    })*/;
   }
 
   Future<void> signOut() async {
@@ -53,9 +55,8 @@ class Auth{
     return currentUser != null;
   }
 
-  Future<Map<String,String>> getUser() async {
-    DocumentSnapshot doc = await store.collection("Users").doc(usr.uid).get();
-    print(doc);
-    return {/*"name": name,*/ "email": auth.currentUser.email};
+  Future getUser() async {
+    doc = await store.collection("Users").doc(auth.currentUser.uid).get();
+    print(doc.data());
   }
 }
