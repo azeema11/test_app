@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:test_app/Services/auth.dart';
+import 'package:test_app/Repository/auth.dart';
 
 class Register extends StatefulWidget {
   _Register createState() => _Register();

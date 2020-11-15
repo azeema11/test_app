@@ -24,14 +24,16 @@ dependencies:
   flutter:
     sdk: flutter
   bloc: ^6.1.0
-  cloud_firestore: 
+  cloud_firestore: null
   cupertino_icons: ^1.0.1
-  firebase_auth: 
-  firebase_core: 
-  firebase_storage: 
+  firebase_auth: null
+  firebase_core: null
+  firebase_storage: null
   flutter_bloc: ^6.1.1
+  font_awesome_flutter: ^8.10.0
   form_field_validator: ^1.0.1
-  provider: 
+  google_sign_in: ^4.5.6
+  provider: null
 
 dev_dependencies:
   flutter_test:

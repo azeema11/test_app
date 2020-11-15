@@ -8,11 +8,11 @@ class LoginBlocInitial extends LoginState {}
 class LoginLoadState extends LoginState{}
 
 class LoginSuccessState extends LoginState{
-  User user;
+  final String user;
   LoginSuccessState(this.user);
 }
 
 class LoginFailedState extends LoginState{
-  String error;
+  final String error;
   LoginFailedState(this.error);
 }
