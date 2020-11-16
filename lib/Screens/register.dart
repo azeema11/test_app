@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:test_app/bloc/test_bloc_bloc.dart';
 
+import '../bloc/test_bloc_bloc.dart';
+import '../bloc/test_bloc_bloc.dart';
+import '../bloc/test_bloc_bloc.dart';
+
 class Register extends StatefulWidget {
   _Register createState() => _Register();
 }
@@ -43,11 +47,13 @@ class _Register extends State<Register> {
           color: Colors.green[800],
         ),
       ),
-      body: BlocBuilder<LoginBloc,LoginState>(
-        builder: (BuildContext context, LoginState state){
+      body: BlocConsumer<LoginBloc,LoginState>(
+        listener: (context, state) {
           if(state is LoginSuccessState){
             Navigator.pop(context);
           }
+        },
+        builder: (BuildContext context, LoginState state){
           return Container(
             padding: EdgeInsets.fromLTRB(
                 MediaQuery.of(context).size.width / 20,
