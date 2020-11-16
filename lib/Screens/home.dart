@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_app/bloc/test_bloc_bloc.dart';
+import 'package:test_app/Auth bloc/test_bloc_bloc.dart';
+import 'package:test_app/Data%20bloc/data_bloc_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   final String name;
@@ -17,15 +18,63 @@ class HomeScreen extends StatelessWidget {
             icon: Icon(Icons.exit_to_app),
             onPressed: () {
               BlocProvider.of<LoginBloc>(context).add(LogoutButtonClickEvent());
+              BlocProvider.of<DataBlocBloc>(context).add(DataClearEvent());
             },
           )
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Center(child: Text('Welcome $name!')),
-        ],
+      body: BlocConsumer<DataBlocBloc, DataBlocState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Center(child: state is DataBlocInitial? RaisedButton(
+                onPressed: (){
+                  BlocProvider.of<DataBlocBloc>(context).add(DataCallEvent(name));
+                },
+                child: Text("Load Data"),
+              )
+              : state is DataLoadState? 
+              CircularProgressIndicator()
+              : state is DataReceivedState?
+              Column(
+                children: [
+                  Text(state.name),
+                  Text(state.email),
+                  RaisedButton(
+                    onPressed: (){
+                      BlocProvider.of<DataBlocBloc>(context).add(DataCallEvent(name));
+                    },
+                    child: Text("Load Data"),
+                  )
+                ],
+              ) 
+              : state is DataFailedState? 
+              Column(
+                children: [
+                  Text(state.error),
+                  RaisedButton(
+                    onPressed: (){
+                      BlocProvider.of<DataBlocBloc>(context).add(DataCallEvent(name));
+                    },
+                    child: Text("Load Data"),
+                  )
+                ],
+              )
+              :
+              RaisedButton(
+                onPressed: (){
+                  BlocProvider.of<DataBlocBloc>(context).add(DataCallEvent(name));
+                },
+                child: Text("Load Data"),
+              ),
+              )
+            ],
+          );
+        },
       ),
     );
   }

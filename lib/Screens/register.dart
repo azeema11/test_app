@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:test_app/bloc/test_bloc_bloc.dart';
-
-import '../bloc/test_bloc_bloc.dart';
-import '../bloc/test_bloc_bloc.dart';
-import '../bloc/test_bloc_bloc.dart';
+import 'package:test_app/Auth bloc/test_bloc_bloc.dart';
 
 class Register extends StatefulWidget {
   _Register createState() => _Register();

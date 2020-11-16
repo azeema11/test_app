@@ -37,7 +37,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield LoginLoadState();
         await _auth.googleLogin();
         if(_auth.usr.uid != null)
-          yield LoginSuccessState(_auth.usr.email);
+          yield LoginSuccessState(_auth.usr.uid);
         else{
           yield LoginFailedState("Enter valid gmail account");
         }
@@ -50,7 +50,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield LoginLoadState();
         await _auth.register(event.email, event.password, event.name);
         if(_auth.usr.uid != null)
-          yield LoginSuccessState(_auth.usr.email);
+          yield LoginSuccessState(_auth.usr.uid);
         else{
           yield LoginFailedState("Enter valid email address");
         }

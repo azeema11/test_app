@@ -2,11 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:test_app/Data%20bloc/data_bloc_bloc.dart';
 import 'package:test_app/Repository/auth.dart';
 import 'package:test_app/Screens/home.dart';
 import 'package:test_app/Screens/login.dart';
 import 'package:test_app/Screens/register.dart';
-import 'package:test_app/bloc/test_bloc_bloc.dart';
+import 'package:test_app/Auth bloc/test_bloc_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,9 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (BuildContext context) => LoginBloc(auth: _auth),
         ),
+        BlocProvider(
+          create: (BuildContext context) => DataBlocBloc(auth: _auth),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

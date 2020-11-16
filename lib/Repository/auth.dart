@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:test_app/Model/user.dart';
 
 class Auth{
 
   String rstr;
   String lstr;
   User usr;
-  FirebaseFirestore store;
+  FirebaseFirestore store = FirebaseFirestore.instance;
   FirebaseAuth auth;
   GoogleSignIn googleSignIn;
   DocumentSnapshot doc;
+  UserModel user;
 
   Auth({FirebaseAuth firebaseAuth, GoogleSignIn googleSignin})
       : auth = firebaseAuth ?? FirebaseAuth.instance,
@@ -40,14 +42,16 @@ class Auth{
   }
 
   Future register(email, password, name) async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value) => usr = value.user)/*.whenComplete(() {
-      store.collection("Users").doc(usr.uid).set({"name": name, "email": email});
-    })*/;
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value) => usr = value.user).whenComplete(() async{
+      await FirebaseFirestore.instance.collection("Users").doc(usr.uid).set({"Name": name, "Email": email});
+    });
   }
 
   Future<void> signOut() async {
     auth ?? auth.signOut();
     googleSignIn ?? googleSignIn.signOut();
+    user = null;
+    usr = null;
   }
 
   Future<bool> isSignedIn() async {
@@ -55,8 +59,12 @@ class Auth{
     return currentUser != null;
   }
 
-  Future getUser() async {
-    doc = await store.collection("Users").doc(auth.currentUser.uid).get();
+  Future getUser(String uid) async {
+    doc = await FirebaseFirestore.instance.collection("Users").doc(uid).get();
     print(doc.data());
+    user = UserModel(
+      name: doc.data()["Name"],
+      email: doc.data()["Email"]
+    );
   }
 }
