@@ -38,7 +38,9 @@ class Auth{
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-    await auth.signInWithCredential(credential).then((value) => usr = value.user);
+    await auth.signInWithCredential(credential).then((value) => usr = value.user).whenComplete(() async{
+      await FirebaseFirestore.instance.collection("Users").doc(usr.uid).set({"Name": usr.displayName, "Email": usr.email});
+    });
   }
 
   Future register(email, password, name) async {

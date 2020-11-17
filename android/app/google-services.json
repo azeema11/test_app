@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "868449243822-m4ulbsettqdv7p4q2kdv1v0lqdtrqs7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.azeem.app",
+            "certificate_hash": "7eba4f2f1204130cf393973cf0ad6aa9865ea5b4"
+          }
+        },
+        {
           "client_id": "868449243822-uf6jfnr19q00qaft5e3k4380oimgt6qk.apps.googleusercontent.com",
           "client_type": 3
         }

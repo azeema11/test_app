@@ -100,7 +100,7 @@ class _Login extends State<Login> {
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height / 40),
-                  /*Center(
+                  Center(
                     child: RaisedButton(
                       color: Colors.blue,
                       textColor: Colors.white,
@@ -116,7 +116,7 @@ class _Login extends State<Login> {
                         ),
                       ),
                     ),
-                  ),*/
+                  ),
                   SizedBox(height: MediaQuery.of(context).size.height / 4),
                   Center(
                     child: FlatButton(
